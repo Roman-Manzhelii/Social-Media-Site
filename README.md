@@ -2,6 +2,3 @@
 Social Media Site
 
 by: Roman & Tony
-
-## Demo's
-Demo Branch Tested
