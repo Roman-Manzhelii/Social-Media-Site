@@ -11,8 +11,22 @@
                         <span class="text-sm text-gray-600">Posted on {{ $post->created_at->format('M d, Y') }}</span>
                     </div>
                     <div class="mb-4">
-                        <img src="{{ asset('storage/' . $post->image) }}" alt="Post Image" class="rounded-lg w-full h-auto">
+                        @php
+                            $fileExtension = pathinfo($post->path, PATHINFO_EXTENSION);
+                        @endphp
+                    
+                        @if(in_array($fileExtension, ['jpeg', 'png', 'jpg', 'gif', 'svg']))
+                            <img src="{{ asset('graphic_content/' . $post->path) }}" alt="Post Image" class="rounded-lg w-full h-auto">
+                        @elseif(in_array($fileExtension, ['mp4', 'mov', 'ogg', 'qt']))
+                            <video controls class="rounded-lg w-full h-auto">
+                                <source src="{{ asset('graphic_content/' . $post->path) }}" type="video/{{ $fileExtension }}">
+                                Your browser does not support the video tag.
+                            </video>
+                        @else
+                            <p>Unsupported file format</p>
+                        @endif
                     </div>
+                    
                     <div class="text-gray-800 mb-4">{{ $post->content }}</div>
                     <div>
                         <a href="{{ route('posts.show', $post->id) }}" class="text-blue-500 hover:text-blue-700">Read more</a>
