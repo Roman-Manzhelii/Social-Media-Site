@@ -10,11 +10,12 @@ use Illuminate\Support\Facades\Route;
 // Публічні маршрути
 Route::get('/', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create')->middleware('auth');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/comments/{post}', [CommentController::class, 'index'])->name('comments.index'); // Перегляд коментарів для конкретного поста
 
 // Маршрути, що потребують аутентифікації
 Route::middleware('auth')->group(function () {
+    Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
     Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
     Route::patch('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
@@ -23,7 +24,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::resource('/comments', CommentController::class);
+
+    // Маршрути для створення, оновлення і видалення коментарів
+    Route::post('/comments/{post}', [CommentController::class, 'store'])->name('comments.store');
+    Route::get('/comments/{comment}/edit', [CommentController::class, 'edit'])->name('comments.edit');
+    Route::patch('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
+    Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 });
 
 // Резервний маршрут
