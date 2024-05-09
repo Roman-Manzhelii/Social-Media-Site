@@ -6,6 +6,8 @@
         <ul>
             <li>Username: {{ auth()->user()->name }}</li>
             <li>Email: {{ auth()->user()->email }}</li>
+            <li>Date of Creation: {{auth()->user()->created_at}}</li>
+            <li>Last Edited: {{auth()->user()->updated_at}}</li>
         </ul>
     </x-slot>
 
