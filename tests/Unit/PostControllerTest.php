@@ -15,9 +15,26 @@ class PostControllerTest extends TestCase
      * HTTP Unit Test
      */
     public function test_example(){
+
         $response = $this->get('/');
 
         $response->assertStatus(200);
+    }
+
+    /**
+     * HTTP Unit Test for Register
+     */
+    public function test_register(){
+
+        $response = $this->post('/register',[
+            'name' => 'Anton',
+            'email' => 'anton@anton.com',
+            'password' => 'testPASS77!',
+            'password_confirmation' => 'testPASS77!'
+        ]);
+
+        $response->assertRedirect('/');
+
     }
 
 }
