@@ -3,6 +3,10 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Profile') }}
         </h2>
+        <ul>
+            <li>Username: {{ auth()->user()->name }}</li>
+            <li>Email: {{ auth()->user()->email }}</li>
+        </ul>
     </x-slot>
 
     <div class="py-12">
