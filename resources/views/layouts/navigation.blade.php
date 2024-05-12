@@ -26,5 +26,9 @@
         <li class="nav-item">
             <a href="{{ route('posts.create') }}" class="nav-link">Create</a>
         </li>
+
+        <li class="nav-item">
+            <a href="{{ route('posts.index') }}" class="nav-link">Home</a>
+        </li>
     </ul>
 </nav>

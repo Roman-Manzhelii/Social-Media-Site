@@ -2,8 +2,24 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+* {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 body {
     background-color: #000;
+    color: white;
+    font-family: Arial, sans-serif;
 }
 
 ul {
@@ -28,6 +44,229 @@ ul {
 
 .nav-link:hover {
     background-color: rgba(255, 255, 255, 0.1);
+}
+
+.media-container {
+    border: 1px solid #333;
+    padding-bottom: 1rem;
+    overflow: hidden;
+}
+
+.media {
+    display: block;
+    min-width: 400px;
+    width: 100%;
+    height: auto;
+    border: 1px solid #333;
+}
+
+.media-section, .comments-section {
+    overflow-y: auto; /* Allows scrolling within each section */
+    min-height: 100vh; /* Ensures each section fills the viewport height */
+}
+
+.media-section {
+    min-width: 40vw;
+}
+
+.comments-section {
+    min-width: 30vw;
+}
+/* Media Section styling */
+.media-section {
+    background: #000; /* Better visibility for media */
+    padding: 20px; /* Consistent padding */
+    display: flex; /* Enables flexbox */
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    flex-direction: column;
+    max-height: 100vh;
+}
+
+.media-section img {
+    max-height: 90vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: row; /* Align children horizontally */
+    justify-content: center; /* Distribute space evenly between the elements */
+    min-height: 100vh; /* Full viewport height */
+    width: 100%; /* Full viewport width */
+}
+
+.description {
+    overflow-y: auto;
+    width: 100%; /* Same width as the media */
+    padding: 20px; /* Padding for text */
+    text-align: left; /* Align the text left */
+    max-height: 35vh;
+}
+
+/* Comments Section styling */
+.comments-section {
+    width: 100%;
+    box-sizing: border-box; /* Includes padding in the width */
+    position: relative; /* Needed for absolute positioning of fixed-form */
+    background-color: #181818;
+    border-left: 1px solid #333;
+    padding: 20px;
+    max-width: 600px;
+}
+
+.comment {
+    background-color: #242424; /* Slightly lighter dark background for each comment */
+    padding: 5px 10px;
+    margin-bottom: 10px; /* Space between comments */
+    border-radius: 8px; /* Rounded corners */
+    border: 1px solid #333; /* Subtle border */
+}
+
+.comment strong {
+    color: #fff; /* White color for usernames */
+    font-weight: bold;
+}
+
+.scrollable-comments {
+    width: 100%; /* Takes full width of comments-section minus padding */
+    overflow-y: auto; /* Allows scrolling */
+    position: relative; /* Context for sizing */
+    max-height: calc(100vh - 160px);
+}
+
+.comment-actions {
+    color: #666; /* Blue color for buttons */
+    display: flex;
+    justify-content: space-between; /* Space out buttons and time */
+    align-items: center;
+    margin-top: 5px; /* Space above the actions */
+}
+
+.comment-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px; /* Padding for touch area */
+}
+
+.comment-actions .comment-time,
+.comment-actions button {
+    font-size: 0.8rem; /* Smaller font size for timestamp */
+}
+
+.fixed-form {
+    position: absolute; /* Absolute positioning relative to comments-section */
+    bottom: 0; /* Stick to the bottom */
+    left: 0; /* Align with the left edge of comments-section */
+    right: 0; /* Align with the right edge of comments-section */
+    padding: 10px; /* Inner padding for form */
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    background-color: #242424; /* Background color */
+    border-radius: 8px; /* Rounded corners */
+    box-sizing: border-box; /* Includes padding in the width calculation */
+}
+
+.fixed-form textarea {
+    width: 100%;
+    background-color: #181818;
+    color: #ccc;
+    border: 1px solid #333;
+    border-radius: 8px; /* Rounded corners for the textarea */
+    padding: 8px; /* Padding inside the textarea */
+}
+
+.fixed-form button {
+    width: 100%;
+    background-color: #4b8bbe; /* Blue background for the button */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Rounded corners for the button */
+    padding: 10px; /* Comfortable padding */
+    margin-top: 5px; /* Space above the button */
+}
+
+/* Mobile Styles */
+@media (max-width: 1024px) {
+    .container{
+        display:flex;
+        flex-direction:column;
+        margin: auto;
+    }
+
+
+    .comments-section {
+        padding-bottom: 100px;
+        margin-left: 160px;
+        margin-right: auto;
+        padding: auto;
+        border: 1px solid #333;
+        justify-items: center;
+        display: flex;
+    }
+}
+
+@media (min-width: 1024px) {
+    .comments-section {
+        min-width: 400px;
+    }
+
+    .media-section {
+        max-height: 100vh;
+    }
+
+    .media-section img {
+        min-width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .comments-section {
+        width: 500px;
+        margin-right: auto;
+        margin-left: 150px;
+    }
+}
+/* Mobile Styles */
+@media (max-width: 655px) {
+    nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        border-top: 1px solid #333;
+        background-color: #000;
+        z-index: 1;
+    }
+
+    .media-container {
+        margin: 20px auto;
+        width: 500px;
+    }
+
+    .media-section {
+        padding: 0;
+        margin: 20px auto;
+    }
+
+    .comments-section {
+        margin: auto;
+        width: 100%;
+    }
+
+    .scrollable-comments {
+        padding-bottom: 100px;
+    }
+
+    .fixed-form {
+        margin-bottom: 65px;
+    }
 }
 
 @media (min-width: 655px) {
@@ -59,44 +298,13 @@ ul {
         margin-top: 20px;
         margin-bottom: 20px;
     }
-}
 
-/* Mobile Styles */
-@media (max-width: 655px) {
-    nav {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 60px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        border-top: 1px solid #333;
-        background-color: #000;
-        z-index: 1;
+    
+    .media-section{
+        margin-left: 160px;
     }
 
-    .media-container {
-        margin: 20px auto;
-        width: 500px;
+    .comments-section {
+        margin-right: auto;
     }
-}
-
-.media-container {
-    border: 1px solid #333;
-    padding-bottom: 1rem;
-    overflow: hidden;
-}
-
-.media {
-    display: block;
-    width: 100%;
-    height: auto;
-    border: 1px solid #333;
-}
-
-.comments-link:hover {
-    text-decoration: underline;
 }
