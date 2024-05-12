@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('phoneNumber')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->string('image')->default('user.png');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

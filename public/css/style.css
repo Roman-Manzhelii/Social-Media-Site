@@ -1,0 +1,33 @@
+.profile_image{
+    max-width: 15%;
+    max-height: 15%;
+}
+
+#image_upload_btn {
+    padding: 1% 2%;
+    font-size: medium;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#image_upload_btn:hover {
+    background-color: #0056b3;
+}
+
+#image_input_box {
+    width: 25%;
+    border: none;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    padding: 1% 2%;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#image_input_box:hover{
+    background-color: #0056b3;
+}

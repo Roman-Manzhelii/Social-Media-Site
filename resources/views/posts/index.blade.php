@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container max-w-4xl mx-auto py-8">
+
+<div class="container mx-auto px-4 py-8">
     @if ($posts->isNotEmpty())
     <div>
         @foreach ($posts as $post)
