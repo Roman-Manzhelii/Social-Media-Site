@@ -13,12 +13,12 @@
             <img class="profile_image" src="{{ asset('storage/' . auth()->user()->image) }}" alt="">
         @endif
 
-        <p>Change profile image</p>
         <div>
+            <p>Change Profile Picture:</p>
             <form action="/upload-image" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input type="file" name="image">
-                <button type="submit">Upload Image</button>
+                <input id = "image_input_box" type="file" name="image">
+                <button id = "image_upload_btn" type="submit">Upload Image</button>
             </form>
         </div>
 
@@ -30,7 +30,7 @@
         </ul>
 
         <br>
-
+        
     </x-slot>
 
     <div class="py-12">
