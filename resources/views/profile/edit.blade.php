@@ -10,7 +10,7 @@
         @if(auth()->user()->image == "user.png")
             <img class="profile_image" src="{{ asset('storage/images/default.png') }}" alt="">
         @else
-            <img class="profile_image" src="{{ asset('storage/' . auth()->user()->image) }}" alt="">
+        <img src="{{ asset('graphic_content/' . auth()->user()->image) }}" alt="Post Image">
         @endif
 
         <div>

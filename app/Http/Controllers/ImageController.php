@@ -12,16 +12,16 @@ class ImageController extends Controller
     public function upload(Request $request){
 
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:8192',
         ]);
     
-        $image_path = $request->file('image')->store('images', 'public');
-    
+        $newGraphicContentName = uniqid() . '.' . $request->image->extension();
+        $request->image->move(public_path('graphic_content'), $newGraphicContentName);
         $user = $request->user();
     
         if ($user) {
 
-            $user->image = $image_path;
+            $user->image = $newGraphicContentName;
             $user->save();
     
             return redirect()->back()->with('success', 'Image uploaded successfully.');

@@ -29,6 +29,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/comments/{comment}/edit', [CommentController::class, 'edit'])->name('comments.edit');
     Route::patch('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
+    Route::post('/upload-image', [ImageController::class, 'upload'])->name('upload.image');
 });
 
 // Після маршрутів з параметрами
@@ -36,8 +38,5 @@ Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show')
 
 // Резервний маршрут
 Route::fallback([PostController::class, 'index']);
-
-// Image
-Route::post('/upload-image', [ImageController::class, 'upload'])->name('upload.image');
 
 require __DIR__.'/auth.php';
