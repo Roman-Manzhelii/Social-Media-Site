@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Route;
 // Публічні маршрути
 Route::get('/', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
-Route::get('/comments/{post}', [CommentController::class, 'index'])->name('comments.index'); // Перегляд коментарів для конкретного поста
 
 // Маршрути, що потребують аутентифікації
 Route::middleware('auth')->group(function () {
@@ -31,6 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 });
+
+// Після маршрутів з параметрами
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
 // Резервний маршрут
 Route::fallback([PostController::class, 'index']);

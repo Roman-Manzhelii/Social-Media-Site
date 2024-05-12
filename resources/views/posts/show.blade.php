@@ -44,7 +44,7 @@
             <form method="POST" action="{{ route('comments.store', $post->id) }}">
                 @csrf
                 <div class="mb-2">
-                    <textarea name="body" rows="3" style="background-color: #333; color: #ccc;" class="w-full p-2 rounded" placeholder="Leave a comment..." required></textarea>
+                    <textarea name="content" rows="3" style="background-color: #333; color: #ccc;" class="w-full p-2 rounded" placeholder="Leave a comment..." required></textarea>
                 </div>
                 <div class="mb-2">
                     <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Comment</button>
@@ -62,8 +62,8 @@
                 <div id="edit-form-{{ $comment->id }}" class="edit-comment-form hidden" >
                     <form method="POST" action="{{ route('comments.update', $comment->id) }}">
                         @csrf
-                        @method('PUT')
-                        <textarea name="body" rows="8" class="w-full p-3 rounded border" style="background-color: #333;">{{ $comment->description }}</textarea>
+                        @method('PATCH')
+                        <textarea name="content" rows="8" class="w-full p-3 rounded border" style="background-color: #333;">{{ $comment->content }}</textarea>
                         <button type="submit" class="mt-2 inline-flex items-center px-3 py-1 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-green">Update</button>
                         <button type="button" onclick="cancelEdit({{ $comment->id }})" class="mt-2 inline-flex items-center px-3 py-1 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Cancel</button>
                     </form>
@@ -76,7 +76,7 @@
                         </div>
                     @else
                         <div>
-                            {{ $comment->body }}
+                            {{ $comment->content }}
                         </div>
                     @endif
                 
@@ -112,7 +112,7 @@
                     <form method="POST" action="{{ route('comments.store', $post->id) }}">
                         @csrf
                         <input type="hidden" name="parent_id" value="{{ $comment->id }}">
-                        <textarea name="body" rows="2" class="w-full p-3 rounded border " style="background-color: #333;" placeholder="Write a reply..."></textarea>
+                        <textarea name="content" rows="2" class="w-full p-3 rounded border " style="background-color: #333;" placeholder="Write a reply..."></textarea>
                         <button type="submit" class="text-sm bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mt-1">Submit Reply</button>
                     </form>
                 </div>
@@ -121,7 +121,7 @@
                     @foreach ($comment->replies as $reply)
                     <div class="border reply p-3 rounded my-2" style="background-color: #333;">
                         <strong>{{ $reply->user->name }} </strong> - <span class="text-gray-400">{{ $reply->updated_at->diffForHumans() }}</span>
-                        <p>{{ $reply->description }}</p>
+                        <p>{{ $reply->content }}</p>
                     </div>
                     @endforeach
                 </div>

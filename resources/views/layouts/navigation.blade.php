@@ -1,6 +1,5 @@
-<nav>
-    <ul class="navbar-nav ml-auto">
-        <!-- Authentication Links -->
+<nav class="text-white">
+    <ul class="flex md:flex-col md:items-center md:justify-start w-full">
         @guest
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -11,26 +10,21 @@
                 </li>
             @endif
         @else
-            <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }}
+            <li class="nav-item">
+                <a href="{{ route('profile.edit') }}" class="nav-link">{{ __('Profile') }}</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
                 </a>
-
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('profile.edit') }}">
-                        {{ __('Profile') }}
-                    </a>
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </div>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </li>
         @endguest
+        <li class="nav-item">
+            <a href="{{ route('posts.create') }}" class="nav-link">Create</a>
+        </li>
     </ul>
 </nav>

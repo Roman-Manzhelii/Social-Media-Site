@@ -9,13 +9,13 @@ use App\Models\Post;
 
 class CommentController extends Controller
 {
-    public function store(Request $request, $reviewId)
+    public function store(Request $request, $postId)
     {
-        $request->validate(['body' => 'required|string']);
+        $request->validate(['content' => 'required|string']);
         $comment = new Comment();
-        $comment->body = $request->body;
+        $comment->content = $request->content;
         $comment->user_id = auth()->id();
-        $comment->review_id = $reviewId; // Ensure this matches your database structure
+        $comment->post_id = $postId; // Ensure this matches your database structure
         $comment->save();
     
         return back()->with('success', 'Comment added successfully.');
@@ -27,8 +27,8 @@ class CommentController extends Controller
         if (auth()->id() !== $comment->user_id) {
             return back()->with('error', 'Unauthorized access.');
         }
-        $request->validate(['body' => 'required|string']);
-        $comment->body = $request->body;
+        $request->validate(['content' => 'required|string']);
+        $comment->content = $request->content;
         $comment->save();
     
         return back()->with('success', 'Comment updated successfully.');
