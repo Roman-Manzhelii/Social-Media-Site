@@ -1,14 +1,36 @@
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
 <x-app-layout>
     <x-slot name="header">
+
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Profile') }}
         </h2>
+
+        @if(auth()->user()->image == "user.png")
+            <img class="profile_image" src="{{ asset('storage/images/default.png') }}" alt="">
+        @else
+            <img class="profile_image" src="{{ asset('storage/' . auth()->user()->image) }}" alt="">
+        @endif
+
+        <p>Change profile image</p>
+        <div>
+            <form action="/upload-image" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="file" name="image">
+                <button type="submit">Upload Image</button>
+            </form>
+        </div>
+
         <ul>
             <li>Username: {{ auth()->user()->name }}</li>
             <li>Email: {{ auth()->user()->email }}</li>
             <li>Date of Creation: {{auth()->user()->created_at}}</li>
             <li>Last Edited: {{auth()->user()->updated_at}}</li>
         </ul>
+
+        <br>
+
     </x-slot>
 
     <div class="py-12">
@@ -32,4 +54,5 @@
             </div>
         </div>
     </div>
+
 </x-app-layout>
