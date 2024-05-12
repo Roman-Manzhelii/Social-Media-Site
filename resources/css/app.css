@@ -187,6 +187,58 @@ ul {
     margin-top: 5px; /* Space above the button */
 }
 
+.create-container {
+    align-items: center;
+    min-height: 100vh;
+    width: 100%; 
+}
+
+.create {
+    background-color: #181818;
+    color: #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    min-width: 400px; /* Max width for better form control on large screens */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: adds depth with a shadow */
+}
+
+
+.create h1 {
+    font-size: 24px; /* Larger font size for heading */
+    margin-bottom: 16px; /* Space below the header */
+}
+
+.create .form-label {
+    font-weight: bold; /* Bold font for labels */
+    display: block; /* Ensure labels are block level for better control */
+    margin-bottom: 8px; /* Space below each label */
+}
+
+.create .form-control {
+    background-color: #181818;
+    border: 1px solid #dbdbdb; /* Light grey border for inputs */
+    padding: 8px 12px; /* Padding inside inputs */
+    border-radius: 4px; /* Slightly rounded corners for inputs */
+    font-size: 16px; /* Comfortable font size for reading */
+    width: 100%; /* Full width inputs */
+}
+
+.create .btn {
+    background-color: #0095f6; /* Instagram-like blue for button */
+    border: none; /* No border for a cleaner look */
+    padding: 8px 16px; /* Padding inside the button */
+    border-radius: 4px; /* Rounded corners for the button */
+    font-weight: bold; /* Bold text for better readability */
+    cursor: pointer; /* Cursor indicates clickable button */
+    margin-top: 12px; /* Space above the button */
+}
+
+.create .btn:hover {
+    background-color: #0077cc; /* Slightly darker blue on hover */
+}
+
+
 /* Mobile Styles */
 @media (max-width: 1024px) {
     .container{
@@ -194,7 +246,6 @@ ul {
         flex-direction:column;
         margin: auto;
     }
-
 
     .comments-section {
         padding-bottom: 100px;
@@ -299,6 +350,14 @@ ul {
         margin-bottom: 20px;
     }
 
+    .create-container{
+        padding-left: 280px;
+        width: calc(100% - 140px);
+    }
+    .create {
+        margin-left: auto;
+        margin-right: auto;
+    }
     
     .media-section{
         margin-left: 160px;
