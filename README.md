@@ -20,7 +20,7 @@ We have 4 main pages for Guest
 
 Admin has an Extra Page to View & Delete Users
 
-![Display Error]("./show.gif")
+![Display Error](./show.gif)
 
 ## Usage
 Download this project with git
