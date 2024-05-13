@@ -8,11 +8,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ImageController;
 use Illuminate\Support\Facades\Route;
 
-// Публічні маршрути
 Route::get('/', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 
-// Маршрути, що потребують аутентифікації
 Route::middleware('auth')->group(function () {
     Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
@@ -24,7 +22,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Маршрути для створення, оновлення і видалення коментарів
     Route::post('/comments/{post}', [CommentController::class, 'store'])->name('comments.store');
     Route::get('/comments/{comment}/edit', [CommentController::class, 'edit'])->name('comments.edit');
     Route::patch('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
@@ -54,12 +51,7 @@ Route::middleware('auth')->group(function () {
     })->name('users.destroy');
 });
 
-
-
-// Після маршрутів з параметрами
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
-
-// Резервний маршрут
 Route::fallback([PostController::class, 'index']);
 
 require __DIR__.'/auth.php';

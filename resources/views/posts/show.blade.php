@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <!-- Media Section -->
+
     <div class="media-section">
             @php
                 $fileExtension = strtolower(pathinfo($post->path, PATHINFO_EXTENSION));
@@ -23,8 +23,6 @@
         </div>
     </div>
 
-
-    <!-- Comments Section -->
     <div class="comments-section">
         <div class="scrollable-comments">
             @foreach ($post->comments->whereNull('parent_id') as $comment)
@@ -69,7 +67,6 @@
                         </form>                        
                     </div>
                     
-                    {{-- Show replies button --}}
                     <div class="flex justify-between items-center mt-2">
                         @if($comment->replies->count() > 0)
                             <button onclick="toggleReplies({{ $comment->id }})" class="text-sm text-blue-500 hover:text-blue-800 focus:outline-none focus:ring-0">
@@ -78,7 +75,6 @@
                         @endif
                     </div>
 
-                    <!-- Форма для відповіді (прихована за замовчуванням) -->
                     <div id="reply-form-{{ $comment->id }}" class="hidden mt-2">
                         <form method="POST" action="{{ route('comments.store', $post->id) }}">
                             @csrf
@@ -98,7 +94,7 @@
                 </div>
             @endforeach
         </div>
-        <!-- Fixed Comment Form Section -->
+
         <div class="fixed-form">
             <form method="POST" action="{{ route('comments.store', $post->id) }}">
                 @csrf

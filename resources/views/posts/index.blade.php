@@ -31,7 +31,6 @@
                     <a href="{{ route('posts.show', $post->id) }}" class="comments-link text-blue-400">View all comments</a>
                 
                     @if (auth()->id() == $post->user_id)
-                        <!-- Edit and Delete buttons -->
                         <div class="flex mt-2">
                             <a href="{{ route('posts.edit', $post->id) }}" class="mr-2 text-blue-500 hover:text-blue-700">Edit</a>
                             <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');">
