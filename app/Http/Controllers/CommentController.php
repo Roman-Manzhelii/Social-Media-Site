@@ -15,19 +15,24 @@ class CommentController extends Controller
         $comment = new Comment();
         $comment->content = $request->content;
         $comment->user_id = auth()->id();
-        $comment->post_id = $postId; // Ensure this matches your database structure
+        $comment->post_id = $postId;
+        if (!empty($request->parent_id)) {
+            $comment->parent_id = $request->parent_id;
+        }
         $comment->save();
     
         return back()->with('success', 'Comment added successfully.');
     }
     
-    public function update(Request $request, $commentId)
+    public function update(Request $request, Comment $comment)
     {
-        $comment = Comment::findOrFail($commentId);
+        $request->validate([
+            'content' => 'required',
+        ]);
+
         if (auth()->id() !== $comment->user_id) {
             return back()->with('error', 'Unauthorized access.');
         }
-        $request->validate(['content' => 'required|string']);
         $comment->content = $request->content;
         $comment->save();
     

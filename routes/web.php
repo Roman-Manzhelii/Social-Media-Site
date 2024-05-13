@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PagesController;
@@ -31,7 +31,30 @@ Route::middleware('auth')->group(function () {
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
     Route::post('/upload-image', [ImageController::class, 'upload'])->name('upload.image');
+
+    Route::get('/users', function () {
+        if (auth()->user() && auth()->user()->IsAdmin) {
+            return app(UserController::class)->index();
+        }
+        return redirect('home')->with('error', 'Unauthorized access.');
+    })->name('users.index');
+
+    Route::get('/users/{user}', function (App\Models\User $user) {
+        if (auth()->user() && auth()->user()->IsAdmin) {
+            return app(UserController::class)->show($user);
+        }
+        return redirect('home')->with('error', 'Unauthorized access.');
+    })->name('users.show');
+
+    Route::delete('/users/{user}', function (App\Models\User $user) {
+        if (auth()->user() && auth()->user()->IsAdmin) {
+            return app(UserController::class)->destroy($user);
+        }
+        return redirect('home')->with('error', 'Unauthorized access.');
+    })->name('users.destroy');
 });
+
+
 
 // Після маршрутів з параметрами
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');

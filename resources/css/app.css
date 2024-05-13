@@ -150,8 +150,22 @@ ul {
 }
 
 .comment-actions .comment-time,
-.comment-actions button {
+.comment-actions button,
+.reply {
     font-size: 0.8rem; /* Smaller font size for timestamp */
+}
+
+.reply {
+    background-color: #1e1e1e; /* Трохи темніший фон для відповідей */
+    color: #ccc;
+    margin-left: 20px; /* Відступ зліва для вкладеності */
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+.reply span {
+    color: #666; /* Blue color for buttons */
 }
 
 .fixed-form {
@@ -365,5 +379,29 @@ ul {
 
     .comments-section {
         margin-right: auto;
+    }
+}
+
+.table-row:hover {
+    background-color: #666;
+}
+
+@media (max-width: 950px) {
+    tr {
+        display: none;
+    }
+
+    .table {
+        display: block;
+        border: 1px solid #ccc;
+    }
+    .table-row {
+        display: block;
+        border-bottom: 1px solid #ccc;
+    }
+    .table-cell {
+        display: block;
+        border: none;
+        text-align: center;
     }
 }

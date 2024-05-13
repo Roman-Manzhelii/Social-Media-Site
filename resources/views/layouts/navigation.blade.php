@@ -1,5 +1,12 @@
 <nav class="text-white">
     <ul class="flex md:flex-col md:items-center md:justify-start w-full">
+        <li class="nav-item">
+            @auth
+                @if(auth()->user()->IsAdmin)
+                        <a href="/users" class="nav-link">Users</a>
+                @endif
+            @endauth
+        </li>
         @guest
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
