@@ -20,8 +20,17 @@ We have 4 main pages for Guest
 
 Admin has an Extra Page to View & Delete Users
 
-![Display Error](./show.gif)
+## Media
 
+![](./show.gif)
+
+![](./public/images/083453.png)
+
+![](./public/images/083725.png)
+
+![](./public/images/084137.png)
+
+![](./public/images/084344.png)
 ## Usage
 Download this project with git
 Then in the same folder run this to launch Styles
@@ -33,7 +42,7 @@ After this run this command and access localhost:8000
     php artisan serve
 ```
 
-## Tony Refrences
+## Tony References
 
 Testing
 - https://www.youtube.com/watch?v=UjA-16diixc
@@ -49,5 +58,16 @@ Email
 
 I also looked at my own code from CA2 for Reminders, and also used Romans code as reference
 
-## Roman Refrences
+## Roman References
 
+Vite https://laravel.com/docs/11.x/vite
+
+Tailwind https://tailwindcss.com/docs/guides/laravel
+
+Laravel From Scratch https://www.youtube.com/watch?v=MYyJ4PuL4pY
+
+Laravel CRUD https://www.youtube.com/watch?v=_LA9QsgJ0bw
+
+CSS https://www.youtube.com/watch?v=OXGznpKZ_sA
+
+Used same useful features from CA2 
