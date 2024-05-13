@@ -12,8 +12,12 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
+
 class RegisteredUserController extends Controller
 {
+
     /**
      * Display the registration view.
      */
@@ -44,6 +48,8 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+
+        Mail::to($user->email)->send(new WelcomeMail());
 
         return redirect()->intended(route('posts.index', absolute: false));
     }
