@@ -61,26 +61,19 @@ ul {
 }
 
 .media-section, .comments-section {
-    overflow-y: auto; /* Allows scrolling within each section */
-    min-height: 100vh; /* Ensures each section fills the viewport height */
+    overflow-y: auto;
+    min-height: 100vh;
 }
 
 .media-section {
-    min-width: 40vw;
-}
-
-.comments-section {
-    min-width: 30vw;
-}
-/* Media Section styling */
-.media-section {
-    background: #000; /* Better visibility for media */
-    padding: 20px; /* Consistent padding */
-    display: flex; /* Enables flexbox */
-    justify-content: center; /* Centers content horizontally */
-    align-items: center; /* Centers content vertically */
+    background: #000;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     max-height: 100vh;
+    min-width: 40vw;
 }
 
 .media-section img {
@@ -89,97 +82,98 @@ ul {
 
 .container {
     display: flex;
-    flex-direction: row; /* Align children horizontally */
-    justify-content: center; /* Distribute space evenly between the elements */
-    min-height: 100vh; /* Full viewport height */
-    width: 100%; /* Full viewport width */
+    flex-direction: row;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
 }
 
 .description {
     overflow-y: auto;
-    width: 100%; /* Same width as the media */
-    padding: 20px; /* Padding for text */
-    text-align: left; /* Align the text left */
+    width: 100%;
+    padding: 20px;
+    text-align: left;
     max-height: 35vh;
 }
 
-/* Comments Section styling */
 .comments-section {
     width: 100%;
-    box-sizing: border-box; /* Includes padding in the width */
-    position: relative; /* Needed for absolute positioning of fixed-form */
+    box-sizing: border-box;
+    position: relative;
     background-color: #181818;
     border-left: 1px solid #333;
     padding: 20px;
     max-width: 600px;
+    min-width: 30vw;
+    
 }
 
 .comment {
-    background-color: #242424; /* Slightly lighter dark background for each comment */
+    background-color: #242424;
     padding: 5px 10px;
-    margin-bottom: 10px; /* Space between comments */
-    border-radius: 8px; /* Rounded corners */
-    border: 1px solid #333; /* Subtle border */
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #333;
 }
 
 .comment strong {
-    color: #fff; /* White color for usernames */
+    color: #fff;
     font-weight: bold;
 }
 
 .scrollable-comments {
-    width: 100%; /* Takes full width of comments-section minus padding */
-    overflow-y: auto; /* Allows scrolling */
-    position: relative; /* Context for sizing */
+    width: 100%;
+    overflow-y: auto;
+    position: relative;
     max-height: calc(100vh - 160px);
 }
 
 .comment-actions {
-    color: #666; /* Blue color for buttons */
+    color: #666;
     display: flex;
-    justify-content: space-between; /* Space out buttons and time */
+    justify-content: space-between;
     align-items: center;
-    margin-top: 5px; /* Space above the actions */
+    margin-top: 5px;
 }
 
 .comment-actions button {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 5px 10px; /* Padding for touch area */
+    padding: 5px 10px;
 }
 
 .comment-actions .comment-time,
 .comment-actions button,
 .reply {
-    font-size: 0.8rem; /* Smaller font size for timestamp */
+    font-size: 0.8rem;
 }
 
 .reply {
-    background-color: #1e1e1e; /* Трохи темніший фон для відповідей */
+    background-color: #1e1e1e;
     color: #ccc;
-    margin-left: 20px; /* Відступ зліва для вкладеності */
+    margin-left: 20px;
     margin-top: 5px;
     margin-bottom: 5px;
     padding: 10px;
 }
 
 .reply span {
-    color: #666; /* Blue color for buttons */
+    color: #666;
 }
 
 .fixed-form {
-    position: absolute; /* Absolute positioning relative to comments-section */
-    bottom: 0; /* Stick to the bottom */
-    left: 0; /* Align with the left edge of comments-section */
-    right: 0; /* Align with the right edge of comments-section */
-    padding: 10px; /* Inner padding for form */
+    position: absolute;
+    bottom: 0;
+    left: 0; 
+    right: 0;
+    padding: 10px;
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 20px;
-    background-color: #242424; /* Background color */
-    border-radius: 8px; /* Rounded corners */
-    box-sizing: border-box; /* Includes padding in the width calculation */
+    background-color: #242424;
+    border-radius: 8px;
+    box-sizing: border-box;
 }
 
 .fixed-form textarea {
@@ -187,18 +181,18 @@ ul {
     background-color: #181818;
     color: #ccc;
     border: 1px solid #333;
-    border-radius: 8px; /* Rounded corners for the textarea */
-    padding: 8px; /* Padding inside the textarea */
+    border-radius: 8px;
+    padding: 8px;
 }
 
 .fixed-form button {
     width: 100%;
-    background-color: #4b8bbe; /* Blue background for the button */
+    background-color: #4b8bbe;
     color: white;
     border: none;
-    border-radius: 8px; /* Rounded corners for the button */
-    padding: 10px; /* Comfortable padding */
-    margin-top: 5px; /* Space above the button */
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 5px;
 }
 
 .create-container {
@@ -213,47 +207,45 @@ ul {
     border-radius: 8px;
     padding: 20px;
     width: 100%;
-    min-width: 400px; /* Max width for better form control on large screens */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: adds depth with a shadow */
+    min-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 
 .create h1 {
-    font-size: 24px; /* Larger font size for heading */
-    margin-bottom: 16px; /* Space below the header */
+    font-size: 24px;
+    margin-bottom: 16px;
 }
 
 .create .form-label {
-    font-weight: bold; /* Bold font for labels */
-    display: block; /* Ensure labels are block level for better control */
-    margin-bottom: 8px; /* Space below each label */
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
 }
 
 .create .form-control {
     background-color: #181818;
-    border: 1px solid #dbdbdb; /* Light grey border for inputs */
-    padding: 8px 12px; /* Padding inside inputs */
-    border-radius: 4px; /* Slightly rounded corners for inputs */
-    font-size: 16px; /* Comfortable font size for reading */
-    width: 100%; /* Full width inputs */
+    border: 1px solid #dbdbdb;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
 }
 
 .create .btn {
-    background-color: #0095f6; /* Instagram-like blue for button */
-    border: none; /* No border for a cleaner look */
-    padding: 8px 16px; /* Padding inside the button */
-    border-radius: 4px; /* Rounded corners for the button */
-    font-weight: bold; /* Bold text for better readability */
-    cursor: pointer; /* Cursor indicates clickable button */
-    margin-top: 12px; /* Space above the button */
+    background-color: #0095f6;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 12px;
 }
 
 .create .btn:hover {
-    background-color: #0077cc; /* Slightly darker blue on hover */
+    background-color: #0077cc;
 }
 
-
-/* Mobile Styles */
 @media (max-width: 1024px) {
     .container{
         display:flex;
@@ -293,7 +285,7 @@ ul {
         margin-left: 150px;
     }
 }
-/* Mobile Styles */
+
 @media (max-width: 655px) {
     nav {
         position: fixed;

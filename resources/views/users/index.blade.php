@@ -3,7 +3,6 @@
 @section('content')
 <div class="create-container flex justify-center mt-10 overflow-x-auto">
     <div class="w-auto max-w-4xl mx-auto">
-        <!-- Enhanced Table Styling -->
         <table class="table w-auto text-white bg-gray-800">
             <thead class="bg-gray-700 text-gray-300">
                 <tr>
