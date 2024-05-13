@@ -1,6 +1,7 @@
 .profile_image{
     max-width: 15%;
     max-height: 15%;
+    border-radius: 50%;
 }
 
 #image_upload_btn {
@@ -35,4 +36,14 @@
 #profile_section{
     margin: 15%;
     color: black;
+}
+
+#profile_title{
+    font-size: large;
+    font-weight: bolder;
+    margin: auto;
+}
+
+#profile_info, #profile_image{
+    margin: auto;
 }

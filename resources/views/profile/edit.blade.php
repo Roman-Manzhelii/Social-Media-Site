@@ -5,17 +5,18 @@
 
         <main id = "profile_section">
 
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Profile') }}
-        </h2>
+        <div id = "profile_title">
+            <h1>Profile</h1>
+        </div>
 
-        @if(auth()->user()->image == "user.png")
-            <img class="profile_image" src="{{ asset('storage/images/default.png') }}" alt="">
-        @else
-        <img class = "profile_image" src="{{ asset('graphic_content/' . auth()->user()->image) }}" alt="Post Image">
-        @endif
+        <div id="profile_image">
 
-        <div>
+            @if(auth()->user()->image == "user.png")
+                <img class="profile_image" src="{{ asset('storage/images/default.png') }}" alt="">
+            @else
+            <img class = "profile_image" src="{{ asset('graphic_content/' . auth()->user()->image) }}" alt="Post Image">
+            @endif
+
             <p>Change Profile Picture:</p>
             <form action="/upload-image" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -24,12 +25,16 @@
             </form>
         </div>
 
-        <ul>
-            <li>Username: {{ auth()->user()->name }}</li>
-            <li>Email: {{ auth()->user()->email }}</li>
-            <li>Date of Creation: {{auth()->user()->created_at}}</li>
-            <li>Last Edited: {{auth()->user()->updated_at}}</li>
-        </ul>
+        <div id = "profile_info">
+
+            <ul>
+                <li>Username: {{ auth()->user()->name }}</li>
+                <li>Email: {{ auth()->user()->email }}</li>
+                <li>Date of Creation: {{auth()->user()->created_at}}</li>
+                <li>Last Edited: {{auth()->user()->updated_at}}</li>
+            </ul>
+
+        </div>
 
     </main>
         
