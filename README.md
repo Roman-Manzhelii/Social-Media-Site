@@ -20,6 +20,8 @@ We have 4 main pages for Guest
 
 Admin has an Extra Page to View & Delete Users
 
+![Display Error]("./show.gif")
+
 ## Usage
 Download this project with git
 Then in the same folder run this to launch Styles
