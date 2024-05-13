@@ -31,3 +31,8 @@
 #image_input_box:hover{
     background-color: #0056b3;
 }
+
+#profile_section{
+    margin: 15%;
+    color: black;
+}

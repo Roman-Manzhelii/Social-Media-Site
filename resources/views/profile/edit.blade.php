@@ -1,7 +1,9 @@
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-<x-app-layout>
+<x-app-layout class="bg-black text-white" >
     <x-slot name="header">
+
+        <main id = "profile_section">
 
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Profile') }}
@@ -10,7 +12,7 @@
         @if(auth()->user()->image == "user.png")
             <img class="profile_image" src="{{ asset('storage/images/default.png') }}" alt="">
         @else
-            <img src="{{ asset('graphic_content/' . auth()->user()->image) }}" alt="Post Image">
+        <img class = "profile_image" src="{{ asset('graphic_content/' . auth()->user()->image) }}" alt="Post Image">
         @endif
 
         <div>
@@ -29,7 +31,7 @@
             <li>Last Edited: {{auth()->user()->updated_at}}</li>
         </ul>
 
-        <br>
+    </main>
         
     </x-slot>
 
