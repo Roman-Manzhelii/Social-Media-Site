@@ -20,7 +20,10 @@ We have 4 main pages for Guest
 
 Admin has an Extra Page to View & Delete Users
 
-## Photos
+## Media
+
+![](./show.gif)
+
 ![](./public/images/083453.png)
 
 ![](./public/images/083725.png)
