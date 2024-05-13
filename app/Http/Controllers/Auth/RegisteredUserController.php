@@ -49,7 +49,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        Mail::to($user->email)->send(new WelcomeMail());
+        //Mail::to($user->email)->send(new WelcomeMail());
 
         return redirect()->intended(route('posts.index', absolute: false));
     }
