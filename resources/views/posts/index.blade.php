@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="mx-auto my-2 py-4">
+
     @if ($posts->isNotEmpty())
     <div>
         @foreach ($posts as $post)
@@ -28,7 +29,19 @@
                     <strong class="font-bold">{{ $post->user->name }} <span class="text-gray-400 text-sm">{{ $post->created_at->diffForHumans() }}</span></strong>
                     <p class="my-2">{{ Illuminate\Support\Str::limit($post->description, 100, '...') }}</p>
                     <a href="{{ route('posts.show', $post->id) }}" class="comments-link text-blue-400">View all comments</a>
-                </div>
+                
+                    @if (auth()->id() == $post->user_id)
+                        <!-- Edit and Delete buttons -->
+                        <div class="flex mt-2">
+                            <a href="{{ route('posts.edit', $post->id) }}" class="mr-2 text-blue-500 hover:text-blue-700">Edit</a>
+                            <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-500 hover:text-red-700">Delete</button>
+                            </form>
+                        </div>
+                    @endif
+                </div>                
             </div>            
         @endforeach
     </div>    
